@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}"/>    
+    
+    
+    <center>
+        <button id="button1" class="button">Comparar Productos</button>
+    </center>
+        
+    <script type="text/javascript">
+        document.getElementById("button1").onclick = function () {
+            location.href = "/products-compare";
+        };
+    </script>
+{% endblock %}

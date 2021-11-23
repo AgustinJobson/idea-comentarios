@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/form.css')}}"/>
+	<div style="margin-left:50px;">    
+        <h2>Ingrese las URL's de los productos que desea comparar</h2>
+        <form id="compare_form" name="compareUrl" action="" method="post" enctype="multipart/form-data" novalidate>
+            {{ form.hidden_tag() }}
+            <div style="margin-top:4%">
+                <h4>URL del Producto 1</h4>
+                {{form.url1(class_="select-css")}}
+            
+                <h4>URL del Producto 2</h4>
+                {{form.url2(class_="select-css")}}
+            </div>
+            <div style="margin-top:3%">
+                <a 
+                    id="compareButton" 
+                    onclick="document.getElementById('compare_form').submit();" 
+                    class="button1">Comparar
+                </a>
+                <a 
+                    type="button" 
+                    class="button1" 
+                    href="/" 
+                    style="background-color:#CCCCCC; color:#000000">Volver
+                </a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

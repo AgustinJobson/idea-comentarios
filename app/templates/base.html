@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}"/>
+        <title>Comparacion de Productos - Mercado Libre</title>     
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="header">
+            <img src="{{url_for('static', filename='images/star.png')}}" 
+                 style="position: relative;margin-top: -3%;margin-bottom:-2%;margin-left: -90%;"
+                 height="100px">
+            </img>
+            <h2>Comparacion de productos</h2>
+            <img src="{{url_for('static', filename='images/mercado-libre-logo.png')}}"
+                 style="position: relative;margin-left: -3%;margin-bottom: -3%;"
+                 height="120px">
+            </img>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+      {% block content %}{% endblock %}
+    </body>
+</html>
