@@ -2,7 +2,7 @@
 
 {% block content %}
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/form.css')}}"/>
-	<div style="margin-left:50px;">    
+	<div style="margin-left:50px;">
         <h2>Ingrese las URL's de los productos que desea comparar</h2>
         <form id="compare_form" name="compareUrl" action="" method="post" enctype="multipart/form-data" novalidate>
             {{ form.hidden_tag() }}
