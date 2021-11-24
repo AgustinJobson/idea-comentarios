@@ -25,7 +25,9 @@ def products_compare():
         df_prod1 = obtener_df_reviews(id_prod1)
         df_prod2 = obtener_df_reviews(id_prod2)
         mejor_producto = obtener_mejor_producto(df_prod1, df_prod2)
-        return redirect(url_for("results", prod = df_prod1))
+        if mejor_producto == 1:
+            return redirect(url_for("results", prod = id_prod1))
+        return redirect(url_for("results", prod = id_prod2))
     return  render_template("products-compare.html", form=form)
 
 @app.route("/results/<prod>")
