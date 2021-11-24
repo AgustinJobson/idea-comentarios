@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, session, redirect
+from flask import Flask, Blueprint, render_template, session, redirect, url_for
 from forms import getForm
 from utils import obtener_id_from_url, obtener_df_reviews
 
@@ -13,6 +13,9 @@ def home():
     return render_template("home.html")
 
 
+# Links de ejemplo
+# https://www.mercadolibre.com.ar/samsung-galaxy-a01-core-16-gb-azul-1-gb-ram/p/MLA16150548
+# https://www.mercadolibre.com.ar/samsung-galaxy-a32-128-gb-awesome-black-4-gb-ram/p/MLA17706115
 @app.route("/products-compare", methods=["GET","POST"])
 def products_compare():
     """Vista del template de comparacion de productos"""
@@ -22,13 +25,14 @@ def products_compare():
         id_prod2 = obtener_id_from_url(form.url2.data)
         df_prod1 = obtener_df_reviews(id_prod1)
         df_prod2 = obtener_df_reviews(id_prod2)
+        return redirect("/results", df_prod1)
     return  render_template("products-compare.html", form=form)
 
 
 @app.route("/results")
 def results():
-    """vista de los resultados"""
-    return render_template("results.html")
+    """Vista del template de resultados"""
+    return render_template("results.html", id = 50)
 
 
 if __name__ == '__main__':
