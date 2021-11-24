@@ -1,10 +1,9 @@
 from flask import Flask, Blueprint, render_template, session, redirect, url_for
 from forms import getForm
-from utils import obtener_id_from_url, obtener_df_reviews
+from utils import obtener_id_from_url, obtener_df_reviews, obtener_mejor_producto
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '1234'
-
 
 @app.route("/")
 @app.route("/home")
@@ -25,14 +24,14 @@ def products_compare():
         id_prod2 = obtener_id_from_url(form.url2.data)
         df_prod1 = obtener_df_reviews(id_prod1)
         df_prod2 = obtener_df_reviews(id_prod2)
-        return redirect("/results", df_prod1)
+        mejor_producto = obtener_mejor_producto(df_prod1, df_prod2)
+        return redirect(url_for("results", prod = df_prod1))
     return  render_template("products-compare.html", form=form)
 
-
-@app.route("/results")
-def results():
+@app.route("/results/<prod>")
+def results(prod):
     """Vista del template de resultados"""
-    return render_template("results.html", id = 50)
+    return render_template("results.html", id = prod)
 
 
 if __name__ == '__main__':

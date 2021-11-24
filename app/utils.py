@@ -8,8 +8,8 @@ import json
 import nltk
 
 
-nltk.data.path.append("/home/agu/Desktop/tesis/utils/stopwords") # Ubuntu Virtualbox
-#nltk.data.path.append("/home/agu/repos/tesis/utils/stopwords") # Notebook
+# nltk.data.path.append("/home/agu/Desktop/tesis/utils/stopwords") # Ubuntu Virtualbox
+nltk.data.path.append("/home/agu/repos/tesis/utils/stopwords") # Notebook
 stop = stopwords.words('spanish')
 
 def obtener_id_from_url(url):
@@ -78,3 +78,7 @@ def preprocesar_comentarios_df(df_comentarios):
        )
     )
     return df_comentarios[["comentario"]]
+
+
+def obtener_mejor_producto(df1, df2):
+    return "apple"
