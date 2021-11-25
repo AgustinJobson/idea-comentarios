@@ -30,8 +30,6 @@ def obtener_info_producto(id_prod):
     if response.status_code != 200:
         return ""
     response_json = json.loads(response.text)
-    #reviews = convert_response_to_list(response_json['reviews'])
-    #df_comentarios = pd.DataFrame.from_records(reviews)
     return response_json
 
 
