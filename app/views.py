@@ -12,9 +12,6 @@ def home():
     return render_template("home.html")
 
 
-# Links de ejemplo
-# https://www.mercadolibre.com.ar/samsung-galaxy-a01-core-16-gb-azul-1-gb-ram/p/MLA16150548
-# https://www.mercadolibre.com.ar/samsung-galaxy-a32-128-gb-awesome-black-4-gb-ram/p/MLA17706115
 @app.route("/products-compare", methods=["GET","POST"])
 def products_compare():
     """Vista del template de comparacion de productos"""

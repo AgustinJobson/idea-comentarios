@@ -92,18 +92,23 @@ palabras_indicadoras_comentario_positivo = "muy buen celular|el celular es excel
 palabras_indicadoras_comentario_negativo = "malisimo|No recomandable|desastre|pobre|malisima|el teléfono es muy malo"
 
 def analizar_comentarios_df(df):
-    df_neg = df[
-        (df["comentario"].str.contains(palabras_indicadoras_comentario_negativo)) |
-        (df["titulo"].str.contains(palabras_indicadoras_comentario_negativo))
-    ]
+    porc_comentarios_positivos = 0
+    porc_comentarios_negativos = 0
 
-    df_pos = df[
-        (df["comentario"].str.contains(palabras_indicadoras_comentario_positivo)) |
-        (df["titulo"].str.contains(palabras_indicadoras_comentario_positivo))
-    ]
+    if not df.empty:
 
-    porc_comentarios_positivos = (len(df_pos) / len(df)) * 100
-    porc_comentarios_negativos = (len(df_neg) / len(df)) * 100
+        df_neg = df[
+            (df["comentario"].str.contains(palabras_indicadoras_comentario_negativo)) |
+            (df["titulo"].str.contains(palabras_indicadoras_comentario_negativo))
+        ]
+
+        df_pos = df[
+            (df["comentario"].str.contains(palabras_indicadoras_comentario_positivo)) |
+            (df["titulo"].str.contains(palabras_indicadoras_comentario_positivo))
+        ]
+
+        porc_comentarios_positivos = (len(df_pos) / len(df)) * 100
+        porc_comentarios_negativos = (len(df_neg) / len(df)) * 100
 
     return porc_comentarios_positivos, porc_comentarios_negativos
 
