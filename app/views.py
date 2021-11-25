@@ -36,7 +36,7 @@ def products_compare():
 def results(prod):
     """Vista del template de resultados"""
     info_prod = obtener_info_producto(prod)
-    return render_template("results.html", id_prod = prod)
+    return render_template("results.html", prod = info_prod)
 
 
 if __name__ == '__main__':

@@ -2,7 +2,15 @@
 
 {% block content %}
 	<div style="margin-left:50px;">
-        <h2>MEJOR PRODUCTO:</h2>
-        {{ id_prod }}
+        <h1>MEJOR PRODUCTO:</h1>
+        <center>
+            <h3>{{ prod["name"] }}</h3>
+            <p><b>Precio:</b> ${{ prod["buy_box_winner_price_range"]["min"]["price"] }} - ${{ prod["buy_box_winner_price_range"]["max"]["price"] }}</p>
+            <p><b>Familia:</b> {{ prod["family_name"] }}</p>
+            <p><b>Compra el producto:</b> <a href='{{ prod["permalink"] }}' target="_blank">{{ prod["permalink"] }}</a></p>
+            {% for imagen in prod["pictures"] %}
+                <img src='{{ imagen["url"] }}' height="60%" />
+            {% endfor %}
+        </center>
     </div>
 {% endblock %}

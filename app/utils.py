@@ -8,8 +8,8 @@ import json
 import nltk
 
 
-nltk.data.path.append("/home/agu/Desktop/tesis/utils/stopwords") # Ubuntu Virtualbox
-# nltk.data.path.append("/home/agu/repos/tesis/utils/stopwords") # Notebook
+#nltk.data.path.append("/home/agu/Desktop/tesis/utils/stopwords") # Ubuntu Virtualbox
+nltk.data.path.append("/home/agu/repos/tesis/utils/stopwords") # Notebook
 stop = stopwords.words('spanish')
 
 def obtener_id_from_url(url):
@@ -30,9 +30,11 @@ def obtener_info_producto(id_prod):
     if response.status_code != 200:
         return ""
     response_json = json.loads(response.text)
-    reviews = convert_response_to_list(response_json['reviews'])
-    df_comentarios = pd.DataFrame.from_records(reviews)
-    return df_comentarios
+    #reviews = convert_response_to_list(response_json['reviews'])
+    #df_comentarios = pd.DataFrame.from_records(reviews)
+    return response_json
+
+
 def convert_response_to_list(reviews):
     """Funcion para retornar algunas cosas de los comentarios"""
     list_reviews = []
