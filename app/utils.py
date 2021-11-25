@@ -23,6 +23,16 @@ def obtener_id_from_url(url):
     return False
 
 
+def obtener_info_producto(id_prod):
+    """Funcion para llamar a la API de ML y obtener la informacion de un producto (nombre, imagenes, etc.)"""
+    url_api = "https://api.mercadolibre.com/products/" + id_prod
+    response = requests.get(url_api)
+    if response.status_code != 200:
+        return ""
+    response_json = json.loads(response.text)
+    reviews = convert_response_to_list(response_json['reviews'])
+    df_comentarios = pd.DataFrame.from_records(reviews)
+    return df_comentarios
 def convert_response_to_list(reviews):
     """Funcion para retornar algunas cosas de los comentarios"""
     list_reviews = []
