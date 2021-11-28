@@ -8,8 +8,9 @@ import json
 import nltk
 
 
-#nltk.data.path.append("/home/agu/Desktop/tesis/utils/stopwords") # Ubuntu Virtualbox
-nltk.data.path.append("/home/agu/repos/tesis/utils/stopwords") # Notebook
+nltk.data.path.append("../utils/stopwords")
+# nltk.data.path.append("/home/agu/Desktop/tesis/utils/stopwords") # Ubuntu Virtualbox
+# nltk.data.path.append("/home/agu/repos/tesis/utils/stopwords") # Notebook
 stop = stopwords.words('spanish')
 
 def obtener_id_from_url(url):
